@@ -17,7 +17,11 @@ from tkinter.filedialog import *
 from tkinter import messagebox
 
 class MainCanvas(Frame):
+    """
+    Parameters: Frame - Ttk Frame widget is a container, used to group other widgets together. 
 
+    Main GUI definitions. 
+    """
     def __init__(self,root,width=200,height=200):
         self.width = width
         Frame.__init__(self, root,width=width,height=height) 
@@ -51,6 +55,12 @@ class MainCanvas(Frame):
         self.__pack_on_screen()
     
     def __on_save(self):
+        """
+        Define: the save button
+        Call: system - [save as] window
+
+        Saves file to file_path by calling self.__drawing_canvas.save(file_path)
+        """
         file_path = asksaveasfilename(initialfile='Untitled.gtxt',
                                         defaultextension=".gtxt",
                                         filetypes=[
@@ -62,6 +72,12 @@ class MainCanvas(Frame):
                 self.__drawing_canvas.delete_all()
                 
     def __on_upload(self):
+        """
+        Define: the load button
+        Call: system - [load saved] window
+
+        Loads file from file_path by calling self.__drawing_canvas.load(file_path)
+        """
         file_path = askopenfilename(defaultextension=".gtxt",
                                       filetypes=[
                                         ("Graph Documents","*.gtxt")])
@@ -73,6 +89,9 @@ class MainCanvas(Frame):
                 self.__drawing_canvas.delete_all()
 
     def get_drawing_canvas(self):
+        """
+        Access function. Returns self.__drawing_canvas. 
+        """
         return self.__drawing_canvas
 
     def __on_element_selection(self):
@@ -216,8 +235,9 @@ class MainCanvas(Frame):
  
 
 if __name__ == "__main__":
-    
-    
+    """
+    PROGRAM ENTRY POINT
+    """
     root =  Tk()
     w, h = root.winfo_screenwidth(), root.winfo_screenheight()
     w = 1200 if w > 1200 else w
