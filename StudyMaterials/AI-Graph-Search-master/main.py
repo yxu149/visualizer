@@ -112,7 +112,9 @@ class MainCanvas(Frame):
             
     
     def __on_element_release(self):
+        """
         
+        """
         self.__H_text.delete(0, 'end')
         self.__Name_text.delete(0, 'end')
         self.__Name_text.insert(END, "Change node name")
@@ -127,16 +129,17 @@ class MainCanvas(Frame):
             try:
                 self.__drawing_canvas.selected.set_weight(int(self.__H_text.get()))
             except :
-                messagebox.showerror(title="ValueError",message="weight must be integer")
+                messagebox.showerror(title="ValueError",message="Weight value must be an integer")
         elif isinstance(self.__drawing_canvas.selected , Node):
             try:
                 self.__drawing_canvas.selected.set_heurastic(int(self.__H_text.get()))
                 self.__drawing_canvas.selected.set_label(self.__Name_text.get())
             except:
-                messagebox.showerror(title="ValueError",message="Heurastic must be integer")
+                messagebox.showerror(title="ValueError",message="Heurastic value must be an integer")
 
     def __submit_callback(self,thread_class,**kwargs):
-
+        """
+        """
         if self.__drawing_canvas.initial_node and not self.__current_thread:
             self.__initial_node = TreeNode(self.__tree_canvas.canvas,0,None,0,self.__tree_canvas.canvas.winfo_width(),self.__drawing_canvas.initial_node)
             self.__current_thread = thread_class(self.__initial_node,self.__goal_set,self.__goal_notfound,**kwargs)
@@ -148,11 +151,12 @@ class MainCanvas(Frame):
             self.__radio_buttons.disable()
             self.__drawing_canvas_buttons.disable()
         elif not self.__drawing_canvas.initial_node:
-            messagebox.showerror(title="InitialNode Error",message="Any Graph must contain initial node")
+            messagebox.showerror(title="InitialNode Error",message="Any Graph must contain one initial node")
 
     def __pack_on_screen(self):
+        """
         
-        
+        """
         self.__goal_label.grid(row=0,column=1,sticky = "NSEW",padx=(0, 5))
         self.__T.grid(row=1,column=1,sticky = "NSEW",padx=(0, 5))
         self.__Name_label.grid(row=0,column=2,sticky = "NSEW",padx=(0, 5))
@@ -175,6 +179,9 @@ class MainCanvas(Frame):
         
 
     def pause_callback(self):
+        """
+        PAUSE Thread Managements
+        """
         if self.__current_thread :
             self.__current_thread.pause()
             self.__buttons.pause.config(state=DISABLED)
@@ -182,6 +189,9 @@ class MainCanvas(Frame):
             self.__buttons.resume.config(state=NORMAL)
     
     def resume_callback(self):
+        """
+        RESUME Thread Managements
+        """
         if self.__current_thread :
             self.__current_thread.resume()
             self.__buttons.pause.config(state=NORMAL)
@@ -189,11 +199,17 @@ class MainCanvas(Frame):
             self.__buttons.resume.config(state=DISABLED)
     
     def terminate_callback(self):
+        """
+        STOP Thread Managements 
+        """
         if self.__current_thread :
             self.__current_thread.stop()
             self.thread_finish()
 
     def delete_all(self):
+        """
+        TRASH Thread Managements
+        """
         self.__on_element_release()
         self.__tree_canvas.canvas.delete("all")
         self.__buttons.delete.config(state=DISABLED)
@@ -209,15 +225,19 @@ class MainCanvas(Frame):
         self.__initial_node = None
 
     def thread_finish(self):
+        """
+        Clear current thread ptr(s)
+        """
         self.__buttons.pause.config(state=DISABLED)
         self.__buttons.resume.config(state=DISABLED)
         self.__buttons.terminate.config(state=DISABLED)
         self.__buttons.delete.config(state=NORMAL)
         self.__current_thread = None
         
-        
     def __goal_set(self,string):
-        
+        """
+        GOAL node assignment
+        """
         self.__T.config(state=NORMAL)
         self.__T.delete(0,"end")
         self.__T.insert(END, string)
@@ -225,10 +245,12 @@ class MainCanvas(Frame):
         self.thread_finish()
     
     def __goal_notfound(self):
-        
+        """
+        GOAL NOT FOUND ENDING
+        """
         self.__T.config(state=NORMAL)
         self.__T.delete(0,"end")
-        self.__T.insert(END,"Goal wasnot found")
+        self.__T.insert(END,"Goal was not found")
         self.__T.config(state=DISABLED)
         self.thread_finish()
 
