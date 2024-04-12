@@ -6,7 +6,9 @@ from tkinter import messagebox
 class AlgorithmsRadioButtons(Frame):
 
     def __init__(self,root,submit_callback,canvas=None):
-        
+        """
+        Buttons for Algorithm Selections 
+        """
         Frame.__init__(self, root)
         self.__var = IntVar()
         self.__depth_limited_text = Entry(self)
@@ -27,7 +29,9 @@ class AlgorithmsRadioButtons(Frame):
         self.__pack_on_screen()
 
     def __pack_on_screen(self):
-
+        """
+        Button Position Definitions
+        """
         self.__algorithms_label.grid(row=0,column=0,sticky="W",padx=(0, 5),pady=(5,5))
         self.__uninformed_label.grid(row=1,column=0,sticky="W",padx=(0, 5),pady=(10,10))
         self.__breadth.grid(row=2,column=0,sticky="W",padx=(0, 5),pady=(5,5))
@@ -43,6 +47,9 @@ class AlgorithmsRadioButtons(Frame):
         self.rowconfigure("all",weight=1)
 
     def __start_search(self):
+        """
+        Links button with Search_Algorithms
+        """
         num = self.__var.get()
         if num == 1:
             self.__submit_callback(BreadthFirstSearch)
@@ -62,7 +69,7 @@ class AlgorithmsRadioButtons(Frame):
         elif num == 7:
             self.__submit_callback(GreedyBestFirstSearch)
         else:
-            messagebox.showerror(title="Submit Error",message="You need to choose Algorithm")
+            messagebox.showerror(title="Submit Error",message="You need to choose at least one algorithm")
 
     def disable(self):
         self.__button.config(state=DISABLED)

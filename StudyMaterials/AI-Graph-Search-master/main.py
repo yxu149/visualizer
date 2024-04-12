@@ -112,9 +112,6 @@ class MainCanvas(Frame):
             
     
     def __on_element_release(self):
-        """
-        
-        """
         self.__H_text.delete(0, 'end')
         self.__Name_text.delete(0, 'end')
         self.__Name_text.insert(END, "Change node name")
@@ -268,7 +265,7 @@ if __name__ == "__main__":
     
     root.title('AI Graph Search')
     root.iconbitmap(os.path.join(BASE_DIR,'GUI','images','logo.ico'))
-    can = MainCanvas(root,920,720)
+    can = MainCanvas(root,10,720)
     
     can.grid(row=0,column=0,sticky = "NSEW")
     
