@@ -47,4 +47,18 @@ class ButtonPanel_L(Frame):
         button.image = img 
         return button 
     
-    
+    """
+    Events
+    """
+    def event_L1(): 
+        pass
+    def event_L2(): 
+        pass
+    def event_L3(): 
+        pass
+    def event_L4(): 
+        pass
+    def event_L5(): 
+        pass
+    def event_L6(): 
+        pass

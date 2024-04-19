@@ -55,4 +55,24 @@ class ButtonPanel_S0(Frame):
         button.image = img 
         return button 
     
+    def event_S0_1(): 
+        pass
+    def event_S0_2(): 
+        pass
+    def event_S0_3(): 
+        pass
+    def event_S0_4(): 
+        pass
+    def event_S0_5(): 
+        pass
+    def event_S0_6(): 
+        pass
+    def event_S0_7(): 
+        pass
+    def event_S0_8(): 
+        pass
+
+if __name__ == "__main__": 
+    root = Tk() 
     
+    root.mainloop() 
