@@ -33,12 +33,12 @@ class ButtonPanel_L(Frame):
                           os.path.join(BASE_DIR,'gui','parts','icons','L6.png'),\
                           self.event_L1)
         
-        self.__button_L1.grid(row=0, column=0, padx = 10, pady=10)
-        self.__button_L2.grid(row=0, column=1, padx = 10, pady=10)
-        self.__button_L3.grid(row=1, column=0, padx = 10, pady=10)
-        self.__button_L4.grid(row=1, column=1, padx = 10, pady=10)
-        self.__button_L5.grid(row=2, column=0, padx = 10, pady=10)
-        self.__button_L6.grid(row=2, column=1, padx = 10, pady=10)
+        self.__button_L1.grid(row=0, column=0, padx=10, pady=10)
+        self.__button_L2.grid(row=0, column=1, padx=10, pady=10)
+        self.__button_L3.grid(row=1, column=0, padx=10, pady=10)
+        self.__button_L4.grid(row=1, column=1, padx=10, pady=10)
+        self.__button_L5.grid(row=2, column=0, padx=10, pady=10)
+        self.__button_L6.grid(row=2, column=1, padx=10, pady=10)
         
     @staticmethod
     def create_button(parent, img_path, callback): 
