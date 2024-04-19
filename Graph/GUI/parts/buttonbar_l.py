@@ -25,13 +25,13 @@ class ButtonPanel_L(Frame):
                           self.event_L3)
         self.__button_L4 = ButtonPanel_L.create_button(self, \
                           os.path.join(BASE_DIR,'gui','parts','icons','L4.png'),\
-                          self.event_L1)
+                          self.event_L4)
         self.__button_L5 = ButtonPanel_L.create_button(self, \
                           os.path.join(BASE_DIR,'gui','parts','icons','L5.png'),\
-                          self.event_L1)
+                          self.event_L5)
         self.__button_L6 = ButtonPanel_L.create_button(self, \
                           os.path.join(BASE_DIR,'gui','parts','icons','L6.png'),\
-                          self.event_L1)
+                          self.event_L6)
         
         self.__button_L1.grid(row=0, column=0, padx=10, pady=10)
         self.__button_L2.grid(row=0, column=1, padx=10, pady=10)
