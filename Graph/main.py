@@ -9,7 +9,7 @@ if __name__ == "__main__":
     root = Tk()
 
     w, h = root.winfo_screenwidth(), root.winfo_screenheight()
-    w = 1200 if w > 1200 else w
+    w = 1290 if w > 1290 else w
     h = 720 if h > 720 else h
     root.geometry("%dx%d+0+0" % (w, h))
 

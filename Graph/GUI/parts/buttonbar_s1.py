@@ -55,22 +55,22 @@ class ButtonPanel_S1(Frame):
         button.image = img 
         return button 
     
-    def event_S1_1(): 
-        pass
-    def event_S1_2(): 
-        pass
-    def event_S1_3(): 
-        pass
-    def event_S1_4(): 
-        pass
-    def event_S1_5(): 
-        pass
-    def event_S1_6(): 
-        pass
-    def event_S1_7(): 
-        pass
-    def event_S1_8(): 
-        pass
+    def event_S1_1(self): 
+        print("Button S1_1 Pressed")
+    def event_S1_2(self): 
+        print("Button S1_2 Pressed")
+    def event_S1_3(self): 
+        print("Button S1_3 Pressed")
+    def event_S1_4(self): 
+        print("Button S1_4 Pressed")
+    def event_S1_5(self): 
+        print("Button S1_5 Pressed")
+    def event_S1_6(self): 
+        print("Button S1_6 Pressed")
+    def event_S1_7(self): 
+        print("Button S1_7 Pressed")
+    def event_S1_8(self): 
+        print("Button S1_8 Pressed")
 
 if __name__ == "__main__": 
     root = Tk() 

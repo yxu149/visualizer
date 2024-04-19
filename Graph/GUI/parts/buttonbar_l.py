@@ -50,15 +50,20 @@ class ButtonPanel_L(Frame):
     """
     Events
     """
-    def event_L1(): 
-        pass
-    def event_L2(): 
-        pass
-    def event_L3(): 
-        pass
-    def event_L4(): 
-        pass
-    def event_L5(): 
-        pass
-    def event_L6(): 
-        pass
+    def event_L1(self): 
+        print("Play Button (L1) Pressed")
+    def event_L2(self): 
+        print("Next Step Button (L2) Pressed")
+    def event_L3(self): 
+        print("Pause Button (L3) Pressed")
+    def event_L4(self): 
+        print("Prev Step Button (L4) Pressed")
+    def event_L5(self): 
+        print("Stop Button (L5) Pressed")
+    def event_L6(self): 
+        print("Empty Button (L6) Pressed")
+
+if __name__ == "__main__": 
+    root = Tk() 
+    
+    root.mainloop() 

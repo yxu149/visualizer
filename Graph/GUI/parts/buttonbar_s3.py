@@ -55,22 +55,22 @@ class ButtonPanel_S3(Frame):
         button.image = img 
         return button 
     
-    def event_S3_1(): 
-        pass
-    def event_S3_2(): 
-        pass
-    def event_S3_3(): 
-        pass
-    def event_S3_4(): 
-        pass
-    def event_S3_5(): 
-        pass
-    def event_S3_6(): 
-        pass
-    def event_S3_7(): 
-        pass
-    def event_S3_8(): 
-        pass
+    def event_S3_1(self): 
+        print("Button S3_1 Pressed")
+    def event_S3_2(self): 
+        print("Button S3_2 Pressed")
+    def event_S3_3(self): 
+        print("Button S3_3 Pressed")
+    def event_S3_4(self): 
+        print("Button S3_4 Pressed")
+    def event_S3_5(self): 
+        print("Button S3_5 Pressed")
+    def event_S3_6(self): 
+        print("Button S3_6 Pressed")
+    def event_S3_7(self): 
+        print("Button S3_7 Pressed")
+    def event_S3_8(self): 
+        print("Button S3_8 Pressed")
 
 if __name__ == "__main__": 
     root = Tk() 
