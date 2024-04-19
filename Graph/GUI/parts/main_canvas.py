@@ -1,6 +1,5 @@
 import sys
 from tkinter import Misc
-from settings.settings import *
 
 from tkinter import *
 from tkinter.ttk import *
@@ -29,7 +28,7 @@ class MainCanvas(Frame):
         self.__pack_on_screen()
 
     def __pack_on_screen(self): 
-        self.__buttonbar_l.grid(row=0, column=3)
+        self.__buttonbar_l.grid(row=1, column=3)
         self.__buttonbar_s0.grid(row=2, column=0)
         self.__buttonbar_s1.grid(row=2, column=1)
         self.__buttonbar_s2.grid(row=2, column=2)
