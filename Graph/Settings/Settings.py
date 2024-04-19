@@ -22,6 +22,16 @@ LINE_COLOR = '#000000'
 LINE_TEXT_COLOR = '#000000'
 LINE_TEXT_FONT = ''
 """
+Small Buttons
+"""
+BUTTON_S_WIDTH = 50 
+BUTTON_S_HEIGHT = 50
+"""
+Large Buttons
+"""
+BUTTON_L_WIDTH = 100 
+BUTTON_L_HEIGHT = 100
+"""
 Canvas / Backdrop
 """
 CANVAS_BG_COLOR = 'grey'
@@ -40,4 +50,3 @@ PATH_NODE_COLOR = 'green'
 """
 Others
 """
-
