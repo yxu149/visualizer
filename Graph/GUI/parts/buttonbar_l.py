@@ -9,6 +9,8 @@ from tkinter.ttk import *
 from tkinter.filedialog import *
 from tkinter import messagebox
 
+from ..wiring.buttonbar_l_wire import *
+
 class ButtonPanel_L(Frame): 
     def __init__(self, root, width=BUTTON_L_WIDTH, height=BUTTON_L_HEIGHT): 
         Frame.__init__(self, root, width=width, height=height) 
