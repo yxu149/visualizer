@@ -49,27 +49,51 @@ class ButtonPanel_S0(Frame):
         self.__button_S0_8.grid(row=1, column=3, padx=10, pady=10)
         
     @staticmethod
-    def create_button(parent, img_path, callback): 
+    def create_button(parent, img_path, cmd): 
         img = PhotoImage(file=img_path)
-        button = Button(parent, image=img, command=callback)
+        button = Button(parent, image=img, command=cmd)
         button.image = img 
         return button 
     
     def event_S0_1(self): 
+        """
+        Set start
+        """
         print("Button S0_1 Pressed")
     def event_S0_2(self): 
+        """
+        Set goal
+        """
         print("Button S0_2 Pressed")
     def event_S0_3(self): 
+        """
+        Set weight
+        """
         print("Button S0_3 Pressed")
     def event_S0_4(self): 
+        """
+        Button 04
+        """
         print("Button S0_4 Pressed")
     def event_S0_5(self): 
+        """
+        Add Node
+        """
         print("Button S0_5 Pressed")
     def event_S0_6(self): 
+        """
+        Remove Node
+        """
         print("Button S0_6 Pressed")
     def event_S0_7(self): 
+        """
+        Add Path
+        """
         print("Button S0_7 Pressed")
     def event_S0_8(self): 
+        """
+        Remove Path
+        """
         print("Button S0_8 Pressed")
 
 if __name__ == "__main__": 

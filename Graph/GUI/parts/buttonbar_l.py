@@ -9,8 +9,6 @@ from tkinter.ttk import *
 from tkinter.filedialog import *
 from tkinter import messagebox
 
-from ..wiring.buttonbar_l_wire import *
-
 class ButtonPanel_L(Frame): 
     def __init__(self, root, width=BUTTON_L_WIDTH, height=BUTTON_L_HEIGHT): 
         Frame.__init__(self, root, width=width, height=height) 
@@ -53,16 +51,35 @@ class ButtonPanel_L(Frame):
     Events
     """
     def event_L1(self): 
+        """
+        Play
+        """
         print("Play Button (L1) Pressed")
+        pass
     def event_L2(self): 
+        """
+        Next Step
+        """
         print("Next Step Button (L2) Pressed")
     def event_L3(self): 
+        """
+        Pause
+        """
         print("Pause Button (L3) Pressed")
     def event_L4(self): 
+        """
+        Prev Step
+        """
         print("Prev Step Button (L4) Pressed")
     def event_L5(self): 
+        """
+        Stop
+        """
         print("Stop Button (L5) Pressed")
     def event_L6(self): 
+        """
+        Clear
+        """
         print("Empty Button (L6) Pressed")
 
 if __name__ == "__main__": 

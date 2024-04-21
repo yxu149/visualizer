@@ -49,19 +49,31 @@ class ButtonPanel_S1(Frame):
         self.__button_S1_8.grid(row=1, column=3, padx=10, pady=10)
         
     @staticmethod
-    def create_button(parent, img_path, callback): 
+    def create_button(parent, img_path, cmd): 
         img = PhotoImage(file=img_path)
-        button = Button(parent, image=img, command=callback)
+        button = Button(parent, image=img, command=cmd)
         button.image = img 
         return button 
     
     def event_S1_1(self): 
+        """
+        Upload Graph
+        """
         print("Button S1_1 Pressed")
     def event_S1_2(self): 
+        """
+        Save Graph
+        """
         print("Button S1_2 Pressed")
     def event_S1_3(self): 
+        """
+        Clear Graph
+        """
         print("Button S1_3 Pressed")
     def event_S1_4(self): 
+        """
+        Reset Cursor
+        """
         print("Button S1_4 Pressed")
     def event_S1_5(self): 
         print("Button S1_5 Pressed")
