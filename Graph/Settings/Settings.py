@@ -26,11 +26,15 @@ Small Buttons
 """
 BUTTON_S_WIDTH = 50 
 BUTTON_S_HEIGHT = 50
+BUTTON_S_PADX = 5
+BUTTON_S_PADY = 5
 """
 Large Buttons
 """
 BUTTON_L_WIDTH = 100 
 BUTTON_L_HEIGHT = 100
+BUTTON_L_PADX = 10
+BUTTON_L_PADY = 10
 """
 Canvas / Backdrop
 """
