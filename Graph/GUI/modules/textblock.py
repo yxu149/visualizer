@@ -1,11 +1,17 @@
-from tkinter import *
+import tkinter as tk
 
-class Textbox(Frame): 
-    def __init__(self, root, text, mode, width, height): 
-        Frame.__init__(self, root, width=width, height=height)
-        self.__root = root 
+class Textbox(tk.Frame): 
+    def __init__(self, root, width, height, justify, text): 
+        tk.Frame.__init__(self, root, width=width, height=height)
+        tk.Label.__init__(self, root, width=width, height=height)
+        self.root = root 
 
-        self.__text = text 
-        self.__mode = mode 
+        self.text = text 
+        self.justify = justify 
         
-        self.__label = Label(root, justify=mode, text=text)
+        self.label = tk.Label(root, justify=justify, text=text)
+
+if __name__ == "__main__": 
+    root = tk.Tk() 
+    
+    root.mainloop() 

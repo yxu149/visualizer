@@ -45,3 +45,4 @@ class Panel(tk.Frame):
     
     def get_height(): 
         return panel_height
+    
