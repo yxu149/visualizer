@@ -52,5 +52,8 @@ PATH_LINE_THICKNESS = 2
 PATH_LINE_COLOR = ''
 PATH_NODE_COLOR = 'green'
 """
-Others
+Texts
 """
+STR_X0_TOP = "Canvas"
+STR_X1_TOP = "Correct Graph"
+STR_X2_TOP = "Your Graph"
