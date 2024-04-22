@@ -12,7 +12,7 @@ from tkinter import messagebox
 class Col(Frame): 
     def __init__(self, root, \
                  part_top, part_mid, part_down, \
-                 width=BUTTON_L_WIDTH, height=BUTTON_L_HEIGHT): 
+                 width=10, height=10): 
         Frame.__init__(self, root, width=width, height=height)
         self.root = root 
 

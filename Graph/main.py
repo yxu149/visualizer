@@ -1,5 +1,7 @@
 import sys
-from gui.parts.main_canvas import *
+
+from settings.settings import *
+from gui.main_canvas import *
 
 sys.path.append(BASE_DIR)
 

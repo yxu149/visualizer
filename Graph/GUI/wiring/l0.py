@@ -13,8 +13,40 @@ dir_icon_5 = os.path.join(BASE_DIR,'gui','icons','L6.png')
 
 icons = [dir_icon_0, dir_icon_1, dir_icon_2, dir_icon_3, dir_icon_4, dir_icon_5]
 # END Improve
-
-def play(self): 
+"""
+Core Logics
+"""
+def play(): 
+    print("[PLAY]")
     pass
 
-def 
+def next_step(): 
+    print("[NEXT STEP]")
+    pass 
+
+def pause(): 
+    print("[PAUSE]")
+    pass 
+
+def prev_step(): 
+    print("[PREV STEP]")
+    pass 
+
+def stop(): 
+    print("[STOP]")
+    pass 
+
+def more(): 
+    print("[MORE]")
+    pass 
+
+events = [play, next_step, pause, prev_step, stop, more] 
+
+"""
+Utils
+"""
+def get_icons(): 
+    return icons 
+
+def get_events(): 
+    return events 
