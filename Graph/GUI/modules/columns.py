@@ -1,19 +1,10 @@
-import sys
-import os 
+import tkinter as tk
 
-from tkinter import Misc
-from settings.settings import *
-
-from tkinter import *
-from tkinter.ttk import *
-from tkinter.filedialog import *
-from tkinter import messagebox
-
-class Col(Frame): 
+class Col(tk.Frame): 
     def __init__(self, root, \
                  part_top, part_mid, part_down, \
                  width=10, height=10): 
-        Frame.__init__(self, root, width=width, height=height)
+        tk.Frame.__init__(self, root, width=width, height=height)
         self.root = root 
 
         self.__part_top = part_top 

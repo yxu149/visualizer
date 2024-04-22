@@ -20,40 +20,40 @@ icons = [dir_icon_0, dir_icon_1, dir_icon_2, dir_icon_3, \
 """
 Core Logics
 """
-def f0(): 
+def f3_0(): 
     print(dir_icon_0)
     pass 
 
-def f1(): 
+def f3_1(): 
     print(dir_icon_1)
     pass 
 
-def f2(): 
+def f3_2(): 
     print(dir_icon_2)
     pass 
 
-def f3(): 
+def f3_3(): 
     print(dir_icon_3)
     pass 
 
-def f4(): 
+def f3_4(): 
     print(dir_icon_4)
     pass 
 
-def f5(): 
+def f3_5(): 
     print(dir_icon_5)
     pass 
 
-def f6(): 
+def f3_6(): 
     print(dir_icon_6)
     pass 
 
-def f7(): 
+def f3_7(): 
     print(dir_icon_7)
     pass 
 
-events = [f0, f1, f2, f3, \
-          f4, f5, f6, f7]
+events = [f3_0, f3_1, f3_2, f3_3, \
+          f3_4, f3_5, f3_6, f3_7]
 
 """
 Utils

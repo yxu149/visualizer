@@ -36,24 +36,24 @@ def clear_cursor():
     print("[CLEAR CURSOR]")
     pass 
 
-def f4(): 
+def f1_4(): 
     print(dir_icon_4)
     pass 
 
-def f5(): 
+def f1_5(): 
     print(dir_icon_5)
     pass 
 
-def f6(): 
+def f1_6(): 
     print(dir_icon_6)
     pass 
 
-def f7(): 
+def f1_7(): 
     print(dir_icon_7)
     pass 
 
 events = [upload, download, clear_graph, clear_cursor, \
-          f4, f5, f6, f7]
+          f1_4, f1_5, f1_6, f1_7]
 
 """
 Utils
