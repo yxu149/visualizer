@@ -1,14 +1,13 @@
 import sys
+import tkinter as tk
 
 from settings.settings import *
-from gui.main_canvas import *
+from gui import main_canvas
 
 sys.path.append(BASE_DIR)
 
-from tkinter import *
-
 if __name__ == "__main__": 
-    root = Tk()
+    root = tk.Tk()
 
     w, h = root.winfo_screenwidth(), root.winfo_screenheight()
     w = 1290 if w > 1290 else w
@@ -16,8 +15,7 @@ if __name__ == "__main__":
     root.geometry("%dx%d+0+0" % (w, h))
 
     root.title('Visualizer App')
-    canvas = MainCanvas(root, 10, 720) 
-
+    canvas = main_canvas.MainCanvas(root, 1290, 720) 
     canvas.grid(row=0, column=0)
 
     root.columnconfigure(0,weight=1)

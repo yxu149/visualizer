@@ -4,20 +4,20 @@ from settings.settings import *
 panel_width = BUTTON_S_WIDTH*4 + BUTTON_S_PADX*5 
 panel_height = BUTTON_S_HEIGHT*4 + BUTTON_S_PADY*3
 
-class Panel8(tk.Frame): 
+class Panel(tk.Frame): 
     def __init__(self, root, events, icons, width=panel_width, height=panel_height): 
         tk.Frame.__init__(self, root, width=width, height=height)
         self.root = root 
         
         # make 8 buttons
-        self.__b0 = Panel8.create_button(self, icons[0], events[0])
-        self.__b1 = Panel8.create_button(self, icons[1], events[1])
-        self.__b2 = Panel8.create_button(self, icons[2], events[2])
-        self.__b3 = Panel8.create_button(self, icons[3], events[3])
-        self.__b4 = Panel8.create_button(self, icons[4], events[4])
-        self.__b5 = Panel8.create_button(self, icons[5], events[5])
-        self.__b6 = Panel8.create_button(self, icons[6], events[6])
-        self.__b7 = Panel8.create_button(self, icons[7], events[7])
+        self.__b0 = Panel.create_button(self, icons[0], events[0])
+        self.__b1 = Panel.create_button(self, icons[1], events[1])
+        self.__b2 = Panel.create_button(self, icons[2], events[2])
+        self.__b3 = Panel.create_button(self, icons[3], events[3])
+        self.__b4 = Panel.create_button(self, icons[4], events[4])
+        self.__b5 = Panel.create_button(self, icons[5], events[5])
+        self.__b6 = Panel.create_button(self, icons[6], events[6])
+        self.__b7 = Panel.create_button(self, icons[7], events[7])
         """
         Place buttons on grid
         Scheme

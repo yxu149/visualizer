@@ -39,6 +39,8 @@ BUTTON_L_PADY = 10
 Canvas / Backdrop
 """
 CANVAS_BG_COLOR = 'grey'
+CANVAS_PADX = 5
+CANVAS_PADY = 5
 """
 Pathfinding
 """
@@ -54,6 +56,5 @@ PATH_NODE_COLOR = 'green'
 """
 Texts
 """
-STR_X0_TOP = "Canvas"
-STR_X1_TOP = "Correct Graph"
-STR_X2_TOP = "Your Graph"
+TEXT_PADX = 5
+TEXT_PADY = 5
