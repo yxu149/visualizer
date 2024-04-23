@@ -1,15 +1,14 @@
 import tkinter as tk 
+from gui.wiring.l0 import *
 from settings.settings import *
 
-panel_width = BUTTON_L_WIDTH*2 + BUTTON_L_PADX*3 
-panel_height = BUTTON_L_HEIGHT*3 + BUTTON_L_PADY*4
-
 class Panel(tk.Frame): 
-    def __init__(self, root, events, icons, width=panel_width, height=panel_height): 
+    def __init__(self, root, events=[], icons=[], width=230, height=340): 
         tk.Frame.__init__(self, root, width=width, height=height)
         self.root = root 
-        
-        # make 8 buttons
+        self.events = events 
+        self.icons = icons
+        # make 6 buttons
         self.__b0 = Panel.create_button(self, icons[0], events[0])
         self.__b1 = Panel.create_button(self, icons[1], events[1])
         self.__b2 = Panel.create_button(self, icons[2], events[2])
@@ -39,10 +38,4 @@ class Panel(tk.Frame):
         button = tk.Button(parent, image=img, command=callback)
         button.image = img 
         return button 
-    
-    def get_width(): 
-        return panel_width
-    
-    def get_height(): 
-        return panel_height
     

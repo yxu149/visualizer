@@ -42,14 +42,10 @@ class MainCanvas(tk.Frame):
         #cursor.mouse.set_root(self)
         tk.Frame.__init__(self, root, width=width, height=height) 
 
-        self.__i0 = textblock.Textbox(self, root, width=w1, height=h3, justify='left', text=str_i0)
-        self.__i1 = textblock.Textbox(self, root, width=w1, height=h3, justify='left', text=str_i1)
-        self.__i2 = textblock.Textbox(self, root, width=w1, height=h3, justify='left', text=str_i2)
-        self.__i3 = textblock.Textbox(self, root, width=w1, height=h3, justify='left', text=str_i3)
-        
-        self.__g0 = canvas.Panel(self, root, events=l0.get_events(), icons=l0.get_icons(), width=w1, height=h2)
-        self.__g1 = canvas.Panel(self, root, events=l0.get_events(), icons=l0.get_icons(), width=w1, height=h2)
-        self.__g2 = canvas.Panel(self, root, events=l0.get_events(), icons=l0.get_icons(), width=w1, height=h2)
+        self.__i0 = textblock.Textbox(self, width=w1, height=h3, justify='left', text=str_i0)
+        self.__i1 = textblock.Textbox(self, width=w1, height=h3, justify='left', text=str_i1)
+        self.__i2 = textblock.Textbox(self, width=w1, height=h3, justify='left', text=str_i2)
+        self.__i3 = textblock.Textbox(self, width=w1, height=h3, justify='left', text=str_i3)
 
         self.__l0 = panel6.Panel(self, root, events=l0.get_events(), icons=l0.get_icons(), width=w1, height=h2)
         self.__s0 = panel8.Panel(self, root, events=s0.get_events(), icons=s0.get_icons(), width=w1, height=h1)
@@ -61,21 +57,23 @@ class MainCanvas(tk.Frame):
         self.__col1 = columns.Col(self, root, width=w0, height=h0, top=self.__i1, mid=self.__g1, down=self.__s1) 
         self.__col2 = columns.Col(self, root, width=w0, height=h0, top=self.__i2, mid=self.__g2, down=self.__s2)
         self.__col3 = columns.Col(self, root, width=w0, height=h0, top=self.__i3, mid=self.__l0, down=self.__s3)
+        self.__pack_on_screen(self)
 
+    def __pack_on_screen(self): 
         # Assemble Parts: 
         # Column 0
         self.__i0.grid(row=0, column=0, padx=(0, TEXT_PADX), pady=(0, TEXT_PADY), stick = "NSEW")
-        self.__g0.grid(row=1, column=0, padx=(0, CANVAS_PADX), pady=(0, CANVAS_PADY), stick = "NSEW")
+        #self.__g0.grid(row=1, column=0, padx=(0, CANVAS_PADX), pady=(0, CANVAS_PADY), stick = "NSEW")
         self.__s0.grid(row=2, column=0, padx=(0, BUTTON_S_PADX), pady=(0, BUTTON_S_PADY), stick = "NSEW")
         self.__col0.grid(row=0, column=0, padx=(0, 5), pady=(0, 5), stick = "NSEW")
         # Column 1
         self.__i1.grid(row=0, column=0, padx=(0, TEXT_PADX), pady=(0, TEXT_PADY), stick = "NSEW")
-        self.__g1.grid(row=1, column=0, padx=(0, CANVAS_PADX), pady=(0, CANVAS_PADY), stick = "NSEW")
+        #self.__g1.grid(row=1, column=0, padx=(0, CANVAS_PADX), pady=(0, CANVAS_PADY), stick = "NSEW")
         self.__s1.grid(row=2, column=0, padx=(0, BUTTON_S_PADX), pady=(0, BUTTON_S_PADY), stick = "NSEW")
         self.__col1.grid(row=0, column=1, padx=(0, 5), pady=(0, 5), stick = "NSEW")
         # Column 2
         self.__i2.grid(row=0, column=0, padx=(0, TEXT_PADX), pady=(0, TEXT_PADY), stick = "NSEW")
-        self.__g2.grid(row=1, column=0, padx=(0, CANVAS_PADX), pady=(0, CANVAS_PADY), stick = "NSEW")
+        #self.__g2.grid(row=1, column=0, padx=(0, CANVAS_PADX), pady=(0, CANVAS_PADY), stick = "NSEW")
         self.__s2.grid(row=2, column=0, padx=(0, BUTTON_S_PADX), pady=(0, BUTTON_S_PADY), stick = "NSEW")
         self.__col2.grid(row=0, column=2, padx=(0, 5), pady=(0, 5), stick = "NSEW")
         # Column 3

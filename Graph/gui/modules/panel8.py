@@ -1,11 +1,7 @@
 import tkinter as tk
-from settings.settings import *
-
-panel_width = BUTTON_S_WIDTH*4 + BUTTON_S_PADX*5 
-panel_height = BUTTON_S_HEIGHT*4 + BUTTON_S_PADY*3
 
 class Panel(tk.Frame): 
-    def __init__(self, root, events, icons, width=panel_width, height=panel_height): 
+    def __init__(self, root, events=[], icons=[], width=225, height=215): 
         tk.Frame.__init__(self, root, width=width, height=height)
         self.root = root 
         

@@ -5,7 +5,7 @@ panel_width = BUTTON_L_WIDTH*2 + BUTTON_L_PADX*3
 panel_height = BUTTON_L_HEIGHT*3 + BUTTON_L_PADY*4
 
 class Panel(Frame): 
-    def __init__(self, root, events, icons, width=panel_width, height=panel_height): 
+    def __init__(self, root, events=[], icons=[], width=panel_width, height=panel_height): 
         Frame.__init__(self, root, width=width, height=height)
         self.root = root 
         
