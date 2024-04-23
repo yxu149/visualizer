@@ -7,7 +7,7 @@ sys.path.append(settings.BASE_DIR)
 import tkinter as tk 
 from gui.canvas import canvas
 from gui.panels import panels, media_ctrl, pen_ctrl, io_ctrl, extra_ctrl
-from gui.screens import usr_screen
+from gui.screens import std_screen, usr_screen
 from gui.cursor import mouse
 
 class MainCanvas(tk.Frame): 
@@ -29,4 +29,6 @@ class MainCanvas(tk.Frame):
             self, event_root=root, \
             onselect=self.__on_element_selection, \
             onrelease=self.__on_element_release)
-        self.__std_screen 
+        self.__std_screen = std_screen.StdScreen(self)
+        self.__pen_ctrl = panels.PenCtrl(self)
+        self.__buttons 

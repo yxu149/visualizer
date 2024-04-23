@@ -2,7 +2,7 @@ import tkinter as tk
 from settings import *
 
 
-class Sketchpad(tk.Frame):
+class StdScreen(tk.Frame):
 
     def __init__(self,root,canvas_width=1000,canvas_height=10000):
         
@@ -28,7 +28,7 @@ if __name__=="__main__":
 
 
     root = tk.Tk()
-    can = Sketchpad(root)
+    can = StdScreen(root)
 
     can.grid(row=0,column=0,sticky=(tk.N,tk.S,tk.E,tk.W))
     root.rowconfigure(0,weight=1)
