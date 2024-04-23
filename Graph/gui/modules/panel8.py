@@ -1,4 +1,5 @@
 import tkinter as tk
+from settings.settings import *
 
 class Panel(tk.Frame): 
     def __init__(self, root, events=[], icons=[], width=225, height=215): 
@@ -37,9 +38,3 @@ class Panel(tk.Frame):
         button = tk.Button(parent, image=img, command=callback)
         button.image = img 
         return button 
-    
-    def get_width(): 
-        return panel_width
-    
-    def get_height(): 
-        return panel_height
