@@ -58,3 +58,8 @@ Texts
 """
 TEXT_PADX = 5
 TEXT_PADY = 5
+"""
+Columns
+"""
+COL_PADX = 5
+COL_PADY = 5
