@@ -36,9 +36,13 @@ BUTTON_L_HEIGHT = 100
 BUTTON_L_PADX = 10
 BUTTON_L_PADY = 10
 """
+All Buttons
+"""
+BUTTON_BG = None
+"""
 Canvas / Backdrop
 """
-CANVAS_BG_COLOR = 'grey'
+CANVAS_BG_COLOR = None
 CANVAS_PADX = 5
 CANVAS_PADY = 5
 """
@@ -51,10 +55,21 @@ NODE_HERE_COLOR = 'cyan'
 NODE_VISITED_COLOR = 'grey'
 
 PATH_LINE_THICKNESS = 2
-PATH_LINE_COLOR = ''
+PATH_LINE_COLOR = None
 PATH_NODE_COLOR = 'green'
 """
 Texts
 """
-TEXT_PADX = 5
-TEXT_PADY = 5
+TEXT_PADX = 1
+TEXT_PADY = 1
+"""
+Columns
+"""
+COL_PADX = 0
+COL_PADY = 0
+COL_BG = None
+"""
+Panels
+"""
+PANEL6_BG = None
+PANEL8_BG = None
