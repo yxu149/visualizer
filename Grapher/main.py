@@ -18,8 +18,8 @@ if __name__ == "__main__":
     canvas = main_canvas.MainCanvas(root, w, h) 
     canvas.grid(row=0, column=0)
 
-    root.columnconfigure(0,weight=1)
-    root.rowconfigure(0,weight=1)
+    root.columnconfigure(0, weight=1)
+    root.rowconfigure(0, weight=1)
     
     for arg in sys.argv:
         if arg[-5:] == '.gtxt':
