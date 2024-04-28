@@ -4,7 +4,7 @@ import gui.modules.panel6 as panel6
 import gui.modules.panel8 as panel8 
 
 import gui.wiring.media_ctrl as media_ctrl
-import gui.wiring.cursor_control as cursor_control
+import gui.wiring.penbrush_ctrl as penbrush_ctrl
 import gui.wiring.io_ctrl as io_ctrl
 import gui.wiring.extra_ctrls_1 as extra_ctrls_1
 import gui.wiring.extra_ctrls_2 as extra_ctrls_2
@@ -24,7 +24,7 @@ class Col0(tk.Frame):
         tk.Frame.__init__(self, root, width=w, height=h, bg=settings.COL_BG)
         self.__top = tk.Label(justify="left", text=str_i0, foreground=settings.TEXT_FG, background=settings.TEXT_BG)
         self.__mid = panel6.Panel(self, events=media_ctrl.get_events(), icons=media_ctrl.get_icons())
-        self.__down = panel8.Panel(self, events=cursor_control.get_events(), icons=cursor_control.get_icons())
+        self.__down = panel8.Panel(self, events=penbrush_ctrl.get_events(), icons=penbrush_ctrl.get_icons())
         self.__pack_on_screen()
 
     def __pack_on_screen(self): 
