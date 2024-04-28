@@ -1,7 +1,7 @@
 import tkinter as tk 
 import tkinter.constants as constants
 import tkinter.messagebox as messagebox 
-import gui.wiring.element_ctrl as element_ctrl 
+import gui.wirings.element_ctrl as element_ctrl 
 import settings.settings as settings
 
 class Stage(tk.Frame): 

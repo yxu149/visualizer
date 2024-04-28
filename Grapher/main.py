@@ -2,7 +2,7 @@ import sys
 import tkinter as tk
 
 import settings.settings as settings
-from gui import gui
+import gui.gui as gui
 
 sys.path.append(settings.BASE_DIR)
 

@@ -1,5 +1,5 @@
 import tkinter as tk
-import gui.wiring.cols as cols
+import gui.instances.cols as cols
 
 from settings.settings import *
 

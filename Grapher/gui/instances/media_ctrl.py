@@ -12,6 +12,16 @@ dir_icon_4 = os.path.join(BASE_DIR,'gui','icons','L5.png')
 dir_icon_5 = os.path.join(BASE_DIR,'gui','icons','L6.png')
 
 icons = [dir_icon_0, dir_icon_1, dir_icon_2, dir_icon_3, dir_icon_4, dir_icon_5]
+
+tips = [
+    "Play",
+    "Next step", 
+    "Pause", 
+    "Previous step", 
+    "Stop", 
+    "More options"
+]
+
 # END Improve
 """
 Core Logics
@@ -50,3 +60,6 @@ def get_icons():
 
 def get_events(): 
     return events 
+
+def get_tips(): 
+    return tips

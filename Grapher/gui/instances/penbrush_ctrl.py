@@ -15,6 +15,16 @@ dir_icon_7 = os.path.join(BASE_DIR,'gui','icons','S0_8.png')
 
 icons = [dir_icon_0, dir_icon_1, dir_icon_2, dir_icon_3, \
          dir_icon_4, dir_icon_5, dir_icon_6, dir_icon_7]
+tips = [
+    "Set a node as the starting point",
+    "Set a node as the target point", 
+    "Set weight/heuristics to an element", 
+    "Unused", 
+    "Add a node", 
+    "Remove a node", 
+    "Link two nodes with a path", 
+    "Remove the path between two nodes"
+]
 # END Improve
 
 """
@@ -63,3 +73,6 @@ def get_icons():
 
 def get_events(): 
     return events 
+
+def get_tips(): 
+    return tips
