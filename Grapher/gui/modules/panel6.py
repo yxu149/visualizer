@@ -4,7 +4,7 @@ from settings.settings import *
 
 class Panel(tk.Frame): 
     def __init__(self, root, events=[], icons=[], width=0, height=0): 
-        tk.Frame.__init__(self, root, width=width, height=height, bg=PANEL6_BG)
+        tk.Frame.__init__(self, root, width=width, height=height, background=PANEL6_BG)
         self.root = root 
         self.events = events 
         self.icons = icons

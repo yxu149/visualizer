@@ -3,10 +3,10 @@ import gui.wiring.cols as cols
 
 from settings.settings import *
 
-class MainCanvas(tk.Frame): 
+class RootFrame(tk.Frame): 
     def __init__(self, root, width=200, height=200): 
         #cursor.mouse.set_root(self)
-        tk.Frame.__init__(self, root, width=width, height=height, bg=CANVAS_BG_COLOR) 
+        tk.Frame.__init__(self, root, width=width, height=height, background=ROOT_BG) 
         self.__col0 = cols.Col0(self)
         self.__col1 = cols.Col1(self)
         self.__col2 = cols.Col2(self) 

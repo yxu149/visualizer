@@ -4,7 +4,7 @@ from settings.settings import *
 
 class Panel(tk.Frame): 
     def __init__(self, root, events=[], icons=[], width=0, height=0): 
-        tk.Frame.__init__(self, root, width=width, height=height, bg=PANEL8_BG)
+        tk.Frame.__init__(self, root, width=width, height=height, background=PANEL8_BG)
         self.root = root 
         
         # make 8 buttons

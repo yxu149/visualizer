@@ -1,10 +1,11 @@
 import tkinter as tk
+import settings.settings as settings
 
 class Col(tk.Frame): 
     def __init__(self, root, \
                  top, mid, down, \
                  width=10, height=10): 
-        tk.Frame.__init__(self, root, width=width, height=height, bg="cyan")
+        tk.Frame.__init__(self, root, width=width, height=height, bg=settings.COL_BG)
         
         self.__top = top 
         self.__mid = mid 
