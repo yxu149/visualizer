@@ -59,3 +59,11 @@ class Line(element.Element):
 
         return self 
     
+    def reset(self): 
+        self.__tree = None 
+        self.__line = None 
+        self.deselect() 
+    
+    def set_active(self): 
+        self.select() 
+        self.__tree.itemconfig()

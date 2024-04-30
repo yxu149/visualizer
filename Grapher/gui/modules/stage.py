@@ -13,4 +13,16 @@ class Stage(tk.Frame):
         self.h_scrollbar = tk.Scrollbar(self, orient=constants.HORIZONTAL)
         self.v_scrollbar = tk.Scrollbar(self, orient=constants.VERTICAL) 
 
-        self.__stage = tk.Canvas(self, bg=settings.STAGE_BG_COLOR)
+        self.canvas = tk.Canvas(self, bg=settings.STAGE_BG, scrollregion=(0, 0, width*2, height*2), yscrollcommand=self.v_scrollbar.set, xscrollcommand=self.h_scrollbar.set)
+
+        self.h_scrollbar['command'] = self.canvas.xview 
+        self.v_scrollbar['command'] = self.canvas.yview
+        
+        # Previously Selected Node
+        # Takes on the ID of the previously selected node 
+        # Used to form a line between the two nodes
+        self.previously_selected_node = None 
+
+        self.objects = dict() 
+        self.selected_node = None 
+        self.root_node = None 

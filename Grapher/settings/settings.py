@@ -20,7 +20,6 @@ Line
 """
 LINE_COLOR_NORMAL = ""
 
-
 LINE_GOAL_BG = "purple"
 LINE_VISITED_BG = "black"
 LINE_GOAL_LABEL_COLOR = "white"
