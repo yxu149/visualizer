@@ -18,6 +18,9 @@ NODE_FRINGE_BG = ""
 """
 Line
 """
+LINE_COLOR_NORMAL = ""
+
+
 LINE_GOAL_BG = "purple"
 LINE_VISITED_BG = "black"
 LINE_GOAL_LABEL_COLOR = "white"
@@ -50,18 +53,6 @@ ROOT_BG = "#1e2124"
 Stage / Canvas
 """
 STAGE_BG = "black"
-"""
-Pathfinding
-"""
-NODE_SELECTED = 'orange'
-NODE_BEGIN_COLOR = 'red'
-NODE_END_COLOR = 'green'
-NODE_HERE_COLOR = 'cyan'
-NODE_VISITED_COLOR = 'grey'
-
-PATH_LINE_THICKNESS = 2
-PATH_LINE_COLOR = None
-PATH_NODE_COLOR = 'green'
 """
 Texts
 """
