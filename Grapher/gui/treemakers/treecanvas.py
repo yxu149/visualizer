@@ -24,7 +24,7 @@ class TreeCanvas(tk.Frame):
     
 if __name__=="__main__":
     root = tk.Tk()
-    can = TreeMaker(root)
+    can = TreeCanvas(root)
 
     can.grid(row=0,column=0,sticky=("NSEW"))
     root.rowconfigure(0,weight=1)
