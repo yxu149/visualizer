@@ -8,6 +8,7 @@ import gui.instances.penbrush_ctrl as penbrush_ctrl
 import gui.instances.io_ctrl as io_ctrl
 import gui.instances.extra_ctrls_1 as extra_ctrls_1
 import gui.instances.extra_ctrls_2 as extra_ctrls_2
+import gui.instances.land as land 
 
 import gui.wirings.io as io
 
@@ -22,7 +23,7 @@ class Col0(tk.Frame):
     def __init__(self, root, w=settings.w1, h=settings.h0): 
         tk.Frame.__init__(self, root, width=w, height=h, bg=settings.COL_BG)
         self.__top = tk.Label(justify="left", text=str_i0, foreground=settings.TEXT_FG, background=settings.TEXT_BG)
-        self.__mid = panel6.Panel(self, events=media_ctrl.get_events(), icons=media_ctrl.get_icons(), tips=media_ctrl.get_tips())
+        self.__mid = land.Land(root, canvas_width=settings.w1, canvas_height=settings.h2_w_padding)
         self.__down = panel8.Panel(self, events=penbrush_ctrl.get_events(), icons=penbrush_ctrl.get_icons(), tips=penbrush_ctrl.get_tips())
         self.__pack_on_screen()
 
@@ -36,7 +37,7 @@ class Col1(tk.Frame):
     def __init__(self, root, w=settings.w1, h=settings.h0): 
         tk.Frame.__init__(self, root, width=w, height=h, bg=settings.COL_BG)
         self.__top = tk.Label(justify="left", text=str_i1, foreground=settings.TEXT_FG, background=settings.TEXT_BG)
-        self.__mid = panel6.Panel(self, events=media_ctrl.get_events(), icons=media_ctrl.get_icons(), tips=media_ctrl.get_tips())
+        self.__mid = land.Land(root, canvas_width=settings.w1, canvas_height=settings.h2_w_padding)
         self.__down = panel8.Panel(self, events=io_ctrl.get_events(), icons=io_ctrl.get_icons(), tips=io_ctrl.get_tips())
         self.__pack_on_screen()
 
@@ -53,7 +54,7 @@ class Col2(tk.Frame):
     def __init__(self, root, w=settings.w1, h=settings.h0): 
         tk.Frame.__init__(self, root, width=w, height=h, bg=settings.COL_BG)
         self.__top = tk.Label(justify="left", text=str_i2, foreground=settings.TEXT_FG, background=settings.TEXT_BG)
-        self.__mid = panel6.Panel(self, events=media_ctrl.get_events(), icons=media_ctrl.get_icons(), tips=media_ctrl.get_tips())
+        self.__mid = land.Land(root, canvas_width=settings.w1, canvas_height=settings.h2_w_padding)
         self.__down = panel8.Panel(self, events=extra_ctrls_1.get_events(), icons=extra_ctrls_1.get_icons(), tips=extra_ctrls_1.get_tips())
         self.__pack_on_screen()
 

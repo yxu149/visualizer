@@ -79,3 +79,4 @@ h2 = BUTTON_L_HEIGHT*3 + BUTTON_L_PADY*4
 h3 = 20
 w0 = w1 * 4
 h0 = h3 + h2 + h1
+h2_w_padding = h2 + 20
