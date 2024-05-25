@@ -1,14 +1,14 @@
 import tkinter as tk 
 import tkinter.constants as constants
-import settings.settings as settings 
+import settings as settings
 
-class TreeCanvas(tk.Frame): 
+class Display(tk.Frame): 
     def __init__(self, root, w=100, h=10000): 
         tk.Frame.__init__(self, root) 
         self.node_count = 0
         self.h_scrollbar = tk.Scrollbar(self, orient=constants.HORIZONTAL) 
         self.v_scrollbar = tk.Scrollbar(self, orient=constants.VERTICAL)
-        self.canvas = tk.Canvas(self, background=settings.STAGE_BG, scrollregion=(0,0,w,h), \
+        self.canvas = tk.Canvas(self, background=settings.FOREST_BACKGROUND, scrollregion=(0,0,w,h), \
                                 yscrollcommand=self.v_scrollbar.set,\
                                 xscrollcommand=self.h_scrollbar.set)
         self.h_scrollbar['command'] = self.canvas.xview 
