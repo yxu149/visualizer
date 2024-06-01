@@ -31,7 +31,11 @@ class Node():
         self.name_label = None 
         self.heuristic_label = None 
 
-    def load_save(self): 
+    # data io
+    def load_data(self): 
+        pass 
+
+    def save_data(self): 
         pass 
 
     # gets 
