@@ -17,10 +17,6 @@ class Line():
         self.is_entry = is_entry
         self.is_visited = False 
 
-        # none boolean properties 
-        self.__label = label 
-        self.__heuristic = heuristic
-
     # data io
     def load_data(self): 
         pass 
