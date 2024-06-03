@@ -16,6 +16,9 @@ class BaseAlgorithm(threading.Thread):
         self.__failure_callback = failure_callback
         self.__success_callback = success_callback
         self.current_node.mark_active()
+
+    def get_current_node_children(self):
+        return self.current_node.getchildren()
         
     def get_wait_flag(self):
         return self.__flag
@@ -75,9 +78,8 @@ class BaseAlgorithm(threading.Thread):
                     self.__success_callback(self.current_node.path_to_root(True) + "   path cost : " + str(self.current_node.get_cost()))
                 return
             self.__flag.wait() # used for pause and resume
-            # print("test")
-            # time.sleep(3)
-            self.expand_node() # expand node, this draw children nodes on tree canvas
+
+            self.expand_node() # expand node
             
             self.current_node.mark_visited()
             time.sleep(SLEEP_AMOUNT)

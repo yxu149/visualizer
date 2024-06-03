@@ -1,6 +1,8 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent.__str__()
+CUSTOM_ALGORITHMS_PATH = os.path.join(BASE_DIR,'Algorithms','Custom_Algorithms.py')
 
 RADUIS = 30
 CIRCLE_COLOR_NORMAL = "#0f0"

@@ -17,6 +17,8 @@ from GUI.utils import mouse
 from tkinter.filedialog import *
 from tkinter import messagebox
 
+import importlib
+
 class MainCanvas(Frame):
     """
     Parameters: Frame - Ttk Frame widget is a container, used to group other widgets together. 
@@ -67,11 +69,22 @@ class MainCanvas(Frame):
         self.__drawing_canvas_buttons = DrawingCanvasButtons(self,self.__drawing_canvas.delete_all,self.__on_save,self.__on_upload)
         self.__initial_node = None
 
+        
         self.__main_thread_finished = False
         self.__student_thread_finished = False
+
+        self.__testButton=Button(self,text="Test",command=self.test_load)
+        # self.main__args = Entry(self)
+        # self.student__args = Entry(self)
         root.bind('<Control-s>',lambda x: self.__on_save())
         root.bind('<Control-o>',lambda x: self.__on_upload())
         self.__pack_on_screen()
+    def test_load(self):
+        module_name = 'Algorithms.custom_algorithms'
+
+        
+
+
     
     def __on_save(self):
         """
@@ -107,6 +120,7 @@ class MainCanvas(Frame):
         #     except:
         #         messagebox.showerror(title="File open error",message="Unable to open corrupted file")
         #         self.__drawing_canvas.delete_all()
+
 
     def get_drawing_canvas(self):
         """
@@ -159,11 +173,13 @@ class MainCanvas(Frame):
     def __submit_callback(self,main_thread_class,**kwargs):
         """
         """
+        main_args=self.__radio_buttons.get_args()
+        student_args=self.__radio_buttons_student.get_args()
         if self.__drawing_canvas.initial_node and not self.__current_thread:
             
             self.__initial_node = TreeNode(self.__tree_canvas.canvas,0,None,0,self.__tree_canvas.canvas.winfo_width(),self.__drawing_canvas.initial_node)
             self.__current_thread = main_thread_class(self.__initial_node,self.__goal_set,
-                                                      self.__goal_notfound,canvas=self.__drawing_canvas, **kwargs)
+                                                      self.__goal_notfound,canvas=self.__drawing_canvas, **main_args)
             self.__current_thread.start()
 
             student_thread_class = self.__radio_buttons_student.get_algorithm()
@@ -171,7 +187,7 @@ class MainCanvas(Frame):
             self.__initial_node_student=TreeNode(self.__tree_canvas_student.canvas,0,None,0,
                                                  self.__tree_canvas_student.canvas.winfo_width(),self.__drawing_canvas_student.initial_node)
             self.__current_thread_student = student_thread_class(self.__initial_node_student,self.__goal_set_student,
-                                                                 self.__goal_notfound_student, canvas=self.__drawing_canvas_student,**kwargs)
+                                                                 self.__goal_notfound_student, canvas=self.__drawing_canvas_student,**student_args)
             self.__current_thread_student.start()
 
             self.__buttons.delete.config(state=DISABLED)

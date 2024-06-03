@@ -14,7 +14,7 @@ class DepthFirstSearch(BaseAlgorithm):
 
         
         self.current_node.expand_node()
-        children = self.current_node.getchildren()
+        children = self.get_current_node_children()
         i = len(children)-1
         while i >=0 :
             self.fringe.append(children[i])
@@ -41,7 +41,7 @@ class DepthLimitedSearch(DepthFirstSearch):
     
     def __init__(self, inital_node,success_callback,failure_callback,canvas=None,*args, **kwargs):
         self.__has_unexplored = False
-        self.__limit =  kwargs.pop('limit')
+        self.__limit =  int(kwargs.pop('limit'))
         super(DepthLimitedSearch,self).__init__(inital_node,success_callback,failure_callback ,*args, **kwargs)
     
     def set_limit(self,limit):
