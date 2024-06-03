@@ -106,3 +106,42 @@ class Mouse_state:
         return self.__state
 
 mouse = Mouse_state()
+
+def filter_options(options, item_type):
+    valid_options = {
+        'rectangle': {'fill', 'outline', 'width', 'dash', 'activefill', 'activeoutline', 'activewidth'},
+        'oval': {'fill', 'outline', 'width', 'dash', 'activefill', 'activeoutline', 'activewidth'},
+        'line': {'fill', 'width', 'dash', 'arrow', 'arrowshape', 'activefill', 'activewidth'},
+        'text': {'text', 'font', 'fill'}
+        # Add other item types and their valid options as needed
+    }
+    return {k: v for k, v in options.items() if k in valid_options.get(item_type, set())}
+
+def copy_canvas(original, new):
+    # Get all items from the original canvas
+    items = original.find_all()
+    
+    for item in items:
+        # Get the item's coordinates and options
+        coords = original.coords(item)
+        options = original.itemconfig(item)
+        item_type = original.type(item)
+        
+        # Flatten options dictionary
+        flattened_options = {}
+        for k, v in options.items():
+            flattened_options[k] = v[-1]
+        
+        # Filter options based on item type
+        valid_options = filter_options(flattened_options, item_type)
+        
+        # Create the same item on the new canvas
+        if item_type == "rectangle":
+            new.create_rectangle(*coords, **valid_options)
+        elif item_type == "oval":
+            new.create_oval(*coords, **valid_options)
+        elif item_type == "line":
+            new.create_line(*coords, **valid_options)
+        elif item_type == "text":
+            new.create_text(*coords, **valid_options)
+        # Add other item types as needed

@@ -71,8 +71,9 @@ class Line(Element):
         
 
     def set_active(self):
+        # print("setting active")
         
-        self.select()
+        self.select() #use for changing line color of drawing canvas
         self.__tree_canvas.itemconfig(self.__tree_line, fill=ACTIVE_LINE_COLOR)
     
     def set_goal_path(self):
@@ -111,6 +112,16 @@ class Line(Element):
         self.__canvas.tag_bind(self.__label_id,binded_event,lambda event, arg=self.__id: callback(event, arg))
         self.__canvas.tag_bind(self.__id, binded_event, lambda event, arg=self.__id: callback(event, arg))
 
+    def copy_line(self,target):
+        target_canvas = target.canvas
+        new_line = Line(target_canvas,self.Node_out,self.Node_in,self.__weight)
+        new_line.create()
+        return new_line
+    def copy_connections(self,target):
+        lookUpTable = target.mainObjectsLookup
+        targetLine = target.objects[lookUpTable[str(self.__id)]]
+        targetLine.Node_in = target.objects[lookUpTable[str(self.Node_in.get_id())]]
+        targetLine.Node_out = target.objects[lookUpTable[str(self.Node_out.get_id())]]
     def __str__(self):
 
         return "line id: "+str(self.__id) + " connecting:  "+str(self.Node_out) +" with "+str(self.Node_in) 
@@ -206,9 +217,11 @@ class Node(Element,InteractionInterface):
             raise OverlapException()
             
         return self.__canvas.create_oval(x0, y0, x1, y1,fill=CIRCLE_COLOR_NORMAL)
-
-
+    
     def create(self):
+        """
+        drawing the circle
+        """
         self.__id = self.__create_circle()
         self.__label_id = self.__canvas.create_text((self.__x, self.__y), text=self.__label)
         self.__heurastic_id = self.__canvas.create_text((self.__x-RADUIS, self.__y-RADUIS), text=self.__heurastic,fill=VALUE_COLOR)
@@ -256,6 +269,7 @@ class Node(Element,InteractionInterface):
     
         return "Node("+ str(self.__label)+")"
 
+    #this changes canvas when doing research
     def mark_visited(self):
         super().mark_visited()
         self.visited = True
@@ -287,3 +301,26 @@ class Node(Element,InteractionInterface):
         if goal:
             self.set_goal()
         self.__reset_color()
+
+    def copy_node(self,target):
+        target_canvas = target.canvas
+        new_node = Node(target_canvas,self.__x,self.__y,self.__label,self.__heurastic,self.__goal,self.__initial,self.__expanded_level)
+        # new_node.lines_in = []
+        # for line in self.lines_in:
+        #     new_node.lines_in.append(target.objects[target.mainObjectLook[line.get_id()]])
+        # new_node.lines_out = []
+        # for line in self.lines_out:
+        #     new_node.lines_out.append(target.objects[target.mainObjectLook[line.get_id()]])
+        
+        new_node.create()
+        new_node.__reset_color()
+        return new_node
+    def copy_connections(self,target):
+        lookUpTable = target.mainObjectsLookup
+
+        # print("self id",self.__id)
+        # print("type",type(self.__id))
+        targetNode = target.objects[lookUpTable[str(self.__id)]]
+        targetNode.adj = [target.objects[lookUpTable[str(node.get_id())]] for node in self.adj]
+        targetNode.lines_in = [target.objects[lookUpTable[str(line.get_id())]] for line in self.lines_in]
+        targetNode.lines_out = [target.objects[lookUpTable[str(line.get_id())]] for line in self.lines_out]

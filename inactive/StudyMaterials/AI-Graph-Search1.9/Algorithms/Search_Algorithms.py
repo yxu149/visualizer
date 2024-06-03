@@ -39,7 +39,7 @@ class DepthFirstSearch(BaseAlgorithm):
 
 class DepthLimitedSearch(DepthFirstSearch):
     
-    def __init__(self, inital_node,success_callback,failure_callback,*args, **kwargs):
+    def __init__(self, inital_node,success_callback,failure_callback,canvas=None,*args, **kwargs):
         self.__has_unexplored = False
         self.__limit =  kwargs.pop('limit')
         super(DepthLimitedSearch,self).__init__(inital_node,success_callback,failure_callback ,*args, **kwargs)
@@ -77,13 +77,13 @@ class DepthLimitedSearch(DepthFirstSearch):
 
 class IterativeDeepeningSearch(DepthLimitedSearch):
     
-    def __init__(self, inital_node,success_callback,failure_callback,*args, **kwargs):
+    def __init__(self, inital_node,success_callback,failure_callback,canvas=None,*args, **kwargs):
         self.__current_limit =  0
         self.__still_running_flag = threading.Event()
         self.__still_running_flag.set()
         self.__success = success_callback
         self.__treecanvas = inital_node.get_canvas()
-        self.__canvas = kwargs.pop('canvas')
+        self.__canvas = canvas
         self.__failure = failure_callback
         self.__inital_node = inital_node
         super(IterativeDeepeningSearch,self).__init__(inital_node,self.__on_success,None,limit= self.__current_limit,*args, **kwargs)

@@ -5,7 +5,7 @@ from GUI.settings import SLEEP_AMOUNT
 
 class BaseAlgorithm(threading.Thread):
 
-    def __init__(self, inital_node,success_callback,failure_callback ,*args, **kwargs):
+    def __init__(self, inital_node,success_callback,failure_callback,canvas=None ,*args, **kwargs):
         super(BaseAlgorithm, self).__init__(*args, **kwargs)
         self.__flag = threading.Event() # The flag used to pause the thread
         self.__flag.set() # Set to True
@@ -30,6 +30,7 @@ class BaseAlgorithm(threading.Thread):
         note : this function expand the node in self.current_node variable. So , loop using this file 
         '''
         self.current_node.expand_node()
+        
         children = self.current_node.getchildren()
         for child in children:
             self.fringe.append(child) 
@@ -51,6 +52,7 @@ class BaseAlgorithm(threading.Thread):
         
         try: 
             self.current_node = self.fringe.pop(0)
+
             self.current_node.mark_active()
             time.sleep(SLEEP_AMOUNT)
             while self.current_node.is_visited():
@@ -73,7 +75,10 @@ class BaseAlgorithm(threading.Thread):
                     self.__success_callback(self.current_node.path_to_root(True) + "   path cost : " + str(self.current_node.get_cost()))
                 return
             self.__flag.wait() # used for pause and resume
-            self.expand_node() # expand node
+            # print("test")
+            # time.sleep(3)
+            self.expand_node() # expand node, this draw children nodes on tree canvas
+            
             self.current_node.mark_visited()
             time.sleep(SLEEP_AMOUNT)
             self.__flag.wait() # used for pause and resume

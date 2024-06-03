@@ -5,10 +5,9 @@ from .Buttons import Button_Bar
 from .settings import CANVAS_BACKGROUND_COLOR
 from .utils import mouse,Mouse_state
 
-
 class DrawingCanvas(Frame):
 
-    def __init__(self,root,canvas_width=2000,canvas_height=1300,event_root=None,onselect=None,onrelease=None):
+    def __init__(self,root,canvas_width=2000,canvas_height=1300,event_root=None,onselect=None,onrelease=None,student_canvas=None):
         '''
         constructor
         '''
@@ -36,6 +35,8 @@ class DrawingCanvas(Frame):
         self.__on_release = onrelease
         mouse.set_callback(self.undo_selection) # add callback function when mouse changes its state (event)
         self.canvas.bind("<ButtonPress-1>", self.mouse_clicked) # add callback function on click event for canvas
+        self.student_canvas = student_canvas
+        self.student_canvas.main_canvas = self
         event_root =  event_root if event_root else root
         event_root.bind("<KeyPress>", self.key_pressed) # add callback function on keyboard press event for the whole window
         
@@ -92,12 +93,18 @@ class DrawingCanvas(Frame):
         if mouse.get_state() == Mouse_state.circle: # check for mouse state
             
             n = Node(self.canvas,self.canvas.canvasx(event.x),self.canvas.canvasy(event.y),str(self.__count_nodes)) # initialize node
+            n_student=Node(self.student_canvas.canvas,self.student_canvas.canvas.canvasx(event.x),self.student_canvas.canvas.canvasy(event.y),str(self.__count_nodes))
+            # print(event.x,event.y)
             try:
                 id = n.create() # create node
+                id_student = n_student.create()
+                self.student_canvas.mainObjectsLookup[str(id)] = str(id_student)
                 self.objects[str(id)] = n # add node to nodes hash-table
+                self.student_canvas.objects[str(id_student)] = n_student
                 n.bind_event(self.node_clicked) # add click event to node
                  
                 self.__count_nodes+=1 # increment number of nodes
+                # self.student_canvas.copy_main(None)
             except Exception as e: 
                 messagebox.showerror(title=e.title,message=e)
                 del n
@@ -113,22 +120,25 @@ class DrawingCanvas(Frame):
         4th case: mouse state is normal and self.selected is not None so the we will deselect old node and select the new one
         5th case: mouse state is normal and self.selected is equal to clicked node so we will deselect this node and makes self.selected = None 
         '''
-
+        
         if mouse.get_state() == Mouse_state.line: # checking for mouse state
-            # 2nd case
+            # click first node
             if not self.connection_node : 
                 
                 self.connection_node = self.objects[str(canvas_item_id)]
                 self.connection_node.select() 
+
+                self.student_canvas.connection_node = self.student_canvas.objects[self.student_canvas.mainObjectsLookup[str(canvas_item_id)]]
+                self.student_canvas.connection_node.select()
                 
             else :
-                # 5th case
+                # click two same nodes
                 if canvas_item_id == self.connection_node.get_id():
                     
                     self.connection_node.deselect()
                     
                     self.connection_node = None
-                # 1st case
+                # click second nodes
                 else :
                     try :
                         
@@ -138,6 +148,15 @@ class DrawingCanvas(Frame):
                         
                         self.connection_node.deselect()
                         self.connection_node = None
+
+                        #student
+                        line_student = self.student_canvas.connection_node.connect_node(
+                            self.student_canvas.objects[self.student_canvas.mainObjectsLookup[str(canvas_item_id)]])
+                        line_student.bind_event(self.student_canvas.line_clicked)
+                        self.student_canvas.objects[str(line_student.get_id())] = line_student
+                        self.student_canvas.connection_node.deselect()
+                        self.student_canvas.connection_node = None
+                        self.student_canvas.mainObjectsLookup[str(line.get_id())] = str(line_student.get_id())
 
                     except Exception as e: 
                         
@@ -167,28 +186,45 @@ class DrawingCanvas(Frame):
 
         elif mouse.get_state() == Mouse_state.initial_node:
             selected_node = self.objects[str(canvas_item_id)]
+            selected_node_student = self.student_canvas.objects[self.student_canvas.mainObjectsLookup[str(canvas_item_id)]]
             
             if not self.initial_node:
                 self.initial_node = selected_node
                 self.initial_node.set_initial()
+
+                self.student_canvas.initial_node = selected_node_student
+                self.student_canvas.initial_node.set_initial()
             
             elif self.initial_node == selected_node:
                 self.initial_node.reset_initial()
                 self.initial_node = None
 
+                self.student_canvas.initial_node.reset_initial()
+                self.student_canvas.initial_node = None
+
             else:
                 self.initial_node.reset_initial()
                 self.initial_node = selected_node
                 self.initial_node.set_initial()
 
+                self.student_canvas.initial_node.reset_initial()
+                self.student_canvas.initial_node = selected_node_student
+                self.student_canvas.initial_node.set_initial()
+
         elif mouse.get_state() == Mouse_state.goal_node:
 
             selected_node = self.objects[str(canvas_item_id)]
+            selected_node_student = self.student_canvas.objects[self.student_canvas.mainObjectsLookup[str(canvas_item_id)]]
             
             if selected_node.is_goal():
                 selected_node.reset_goal()
+                selected_node_student.reset_goal()
+                
             else:
                 selected_node.set_goal()
+                selected_node_student.set_goal()
+        
+        # self.student_canvas.copy_main(None)
 
     def reset_selected(self):
         
@@ -230,6 +266,8 @@ class DrawingCanvas(Frame):
         self.selected = None
         self.initial_node = None
         self.canvas.delete("all")
+
+        # self.student_canvas.delete_all()
     
     def save(self,path):
         with open(path, mode='w', encoding='utf-8') as file:
@@ -282,6 +320,38 @@ class DrawingCanvas(Frame):
         nodes_dict = self.__load_nodes(lines)
 
         self.__load_connections(nodes_dict,lines[self.__count_nodes+1:]) 
+
+        self.copy_canvas()
+
+    def copy_canvas(self):
+        target = self.student_canvas
+        target.delete_all()
+        #create node and line objects
+        for id,element in self.objects.items():
+            if isinstance(element,Node):
+                # print("id: ",id)
+                # print("test")
+                n = element.copy_node(target)
+                target.objects[str(n.get_id())] = n
+                target.mainObjectsLookup[str(id)] = str(n.get_id())
+                if element.is_initial():
+                    target.initial_node = n
+
+            else:
+                n = element.copy_line(target)
+                target.objects[str(n.get_id())] = n
+                target.mainObjectsLookup[str(id)] = str(n.get_id())
+        
+        #recover connections
+        for id,element in self.objects.items():
+            if isinstance(element,Node):
+                # print("id: ",id)
+                element.copy_connections(self.student_canvas)
+            else:
+                element.copy_connections(self.student_canvas)
+
+        print(target.initial_node)
+        # print(target.initial_node)
         
 
 
