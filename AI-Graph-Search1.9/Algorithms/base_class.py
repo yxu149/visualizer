@@ -53,19 +53,15 @@ class BaseAlgorithm(threading.Thread):
         normal implementation to pick new node        
         ''' 
         
-        try: 
+        while len(self.fringe) > 0:
             self.current_node = self.fringe.pop(0)
-
             self.current_node.mark_active()
             time.sleep(SLEEP_AMOUNT)
-            while self.current_node.is_visited():
-                self.__flag.wait()
-                self.current_node.mark_already_visited()
-                self.current_node = self.fringe.pop(0)
-                self.current_node.mark_active()
-                time.sleep(SLEEP_AMOUNT)
-        except :
-            self.current_node = None
+            if not self.current_node.is_visited():
+                return
+            self.get_wait_flag().wait() # use to pause the thread when the user click on pause button
+            self.current_node.mark_already_visited()
+        self.current_node = None
             
     
     def run(self):
@@ -87,6 +83,7 @@ class BaseAlgorithm(threading.Thread):
             self.pick_node() # pick new node from the fringe
             time.sleep(SLEEP_AMOUNT)
         
+        # print("fail")
         if self.__failure_callback:
             self.__failure_callback()
 

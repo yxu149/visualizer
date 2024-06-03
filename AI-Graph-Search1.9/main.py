@@ -66,7 +66,7 @@ class MainCanvas(Frame):
         self.__current_thread_student = None
         self.__radio_buttons = AlgorithmsRadioButtons(self,self.__submit_callback,self.__drawing_canvas)
         self.__radio_buttons_student=AlgorithmsRadioButtonsStudent(self,self.__submit_callback,self.__drawing_canvas_student)
-        self.__drawing_canvas_buttons = DrawingCanvasButtons(self,self.__drawing_canvas.delete_all,self.__on_save,self.__on_upload)
+        self.__drawing_canvas_buttons = DrawingCanvasButtons(self,self.delete_main_and_student_canvas,self.__on_save,self.__on_upload)
         self.__initial_node = None
 
         
@@ -417,6 +417,10 @@ class MainCanvas(Frame):
         self.__T_student.insert(END,"Goal was not found")
         self.__T_student.config(state=DISABLED)
         self.thread_finish_student()
+
+    def delete_main_and_student_canvas(self):
+        self.__drawing_canvas.delete_all()
+        self.__drawing_canvas_student.delete_all()
 
 
  

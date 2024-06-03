@@ -350,7 +350,7 @@ class DrawingCanvas(Frame):
             else:
                 element.copy_connections(self.student_canvas)
 
-        print(target.initial_node)
+        # print(target.initial_node)
         # print(target.initial_node)
         
 

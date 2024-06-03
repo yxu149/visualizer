@@ -22,20 +22,15 @@ class DepthFirstSearch(BaseAlgorithm):
 
     def pick_node(self):
 
-        try: 
+        while len(self.fringe) > 0:
             self.current_node = self.fringe.pop()
             self.current_node.mark_active()
             time.sleep(SLEEP_AMOUNT)
-            while self.current_node.is_visited():
-                
-                self.get_wait_flag().wait()
-                self.current_node.mark_already_visited()
-                self.current_node = self.fringe.pop()
-                self.current_node.mark_active()
-                time.sleep(SLEEP_AMOUNT)
-        except :
-            
-            self.current_node = None
+            if not self.current_node.is_visited():
+                return
+            self.get_wait_flag().wait() # use to pause the thread when the user click on pause button
+            self.current_node.mark_already_visited()
+        self.current_node = None
 
 class DepthLimitedSearch(DepthFirstSearch):
     
@@ -60,20 +55,29 @@ class DepthLimitedSearch(DepthFirstSearch):
             self.current_node.mark_visited()
         
     def pick_node(self):
-
-        try: 
+        while len(self.fringe) > 0:
             self.current_node = self.fringe.pop()
             self.current_node.mark_active()
             time.sleep(SLEEP_AMOUNT)
-            while self.current_node.is_visited() and self.current_node.get_expanded_level() <= self.current_node.get_level():
+            if not (self.current_node.is_visited() and self.current_node.get_expanded_level() <= self.current_node.get_level()):
+                return
+            self.get_wait_flag().wait() # use to pause the thread when the user click on pause button
+            self.current_node.mark_already_visited()
+        self.current_node = None
+
+        # try: 
+        #     self.current_node = self.fringe.pop()
+        #     self.current_node.mark_active()
+        #     time.sleep(SLEEP_AMOUNT)
+        #     while self.current_node.is_visited() and self.current_node.get_expanded_level() <= self.current_node.get_level():
                 
-                self.get_wait_flag().wait()
-                self.current_node.mark_already_visited()
-                self.current_node = self.fringe.pop()
-                self.current_node.mark_active()
-                time.sleep(SLEEP_AMOUNT)
-        except :
-            self.current_node = None
+        #         self.get_wait_flag().wait()
+        #         self.current_node.mark_already_visited()
+        #         self.current_node = self.fringe.pop()
+        #         self.current_node.mark_active()
+        #         time.sleep(SLEEP_AMOUNT)
+        # except :
+        #     self.current_node = None
 
 class IterativeDeepeningSearch(DepthLimitedSearch):
     
