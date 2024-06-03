@@ -1,1 +1,1 @@
-
+Hi, this is the repo for AI-Graph-Search-2. It is an algorithm visualizer rewritten partially based on the logic of https://github.com/Ahmed712441/AI-Graph-Search. It currently is only an empty GUI, the functions are not linked up yet. For a working software, please go to Al-Graph-Search-1.9. 
